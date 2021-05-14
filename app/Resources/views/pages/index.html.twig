@@ -1,0 +1,34 @@
+{{ include('pages/inc/head.html.twig') }}
+        <div class="container">
+            
+            <div class="row"><a href="{{ absolute_url(asset('')) }}post/create" class="btn btn-primary">Create</a></div>
+            
+  <h2>Lisr</h2>
+  <p>The .table-bordered class adds borders to a table:</p>            
+  <table class="table table-bordered">
+      <tr>
+          <th>S.no</th> 
+          <th>Title</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Action</th>
+      </tr>
+    
+      {% for pos in post %}
+      <tr>
+        <td>{{ pos.id }}</td>
+        <td>{{ pos.title }}</td>
+        <td>{{ pos.description }}</td>
+        <td>{{ pos.category }}</td>
+        <td><a href="{{ absolute_url(asset('')) }}post/show/{{ pos.id }}">View</a>
+        <a href="{{ absolute_url(asset('')) }}post/update/{{ pos.id }}">Edit</a>
+        <a href="{{ absolute_url(asset('')) }}post/delete/{{ pos.id }}">Delete</a></td>
+      </tr>
+     {% else  %}
+    <tr>
+        <td>No data found</td>
+    </tr>
+         {% endfor %}
+  </table>
+</div>
+   {{ include('pages/inc/tail.html.twig') }}
